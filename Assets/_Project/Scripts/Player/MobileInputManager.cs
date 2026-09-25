@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using FinalDrop.Weapons;
 
 namespace FinalDrop.Player
 {
@@ -8,6 +9,7 @@ namespace FinalDrop.Player
         [Header("References")]
         [SerializeField] private PlayerMovementController movement;
         [SerializeField] private TouchJoystick moveJoystick;
+        [SerializeField] private WeaponController weapon;
 
         [Header("Look drag area (right half of screen)")]
         [SerializeField] private RectTransform lookDragArea;
@@ -64,5 +66,9 @@ namespace FinalDrop.Player
         public void OnCrouchButtonPressed() => movement.CrouchToggle = true;
         public void OnProneButtonPressed() => movement.ProneToggle = true;
         public void OnJumpButtonPressed() => movement.JumpPressed = true;
+
+        public void OnFireButtonDown() => weapon.FireHeld = true;
+        public void OnFireButtonUp() => weapon.FireHeld = false;
+        public void OnReloadButtonPressed() => weapon.ReloadPressed = true;
     }
 }
